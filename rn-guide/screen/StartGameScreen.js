@@ -5,6 +5,7 @@ import Card from '../component/Card';
 import Colors from '../constants/Colors';
 import Input from '../component/Input';
 import NumberOntainer from '../component/NumberContainer';
+import DefualtStyle from '../constants/Default-styles';
 
 const startGameScreen = (props) => {
 
@@ -57,9 +58,9 @@ const startGameScreen = (props) => {
     return (
         <TouchableWithoutFeedback onPress={()=>{ Keyboard.dismiss() }}> 
             <View style={styles.screen}>
-                <Text style={styles.title}>Start Game</Text>
+                <Text style={{...styles.title, ...DefualtStyle.titleText}}>Start Game</Text>
                 <Card style={styles.inputContainer}>
-                    <Text>Select a Number</Text>
+                    <Text style={DefualtStyle.bodyText}>Select a Number</Text>
                     <Input 
                         style={styles.input} 
                         blurOnSubmit 
