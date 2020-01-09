@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TouchableWithoutFeedback, Keyboard, Alert} from 'react-native';
+import { 
+    StyleSheet, 
+    Text, 
+    View, 
+    Button, 
+    TouchableWithoutFeedback, 
+    Keyboard, 
+    Alert,
+    Dimensions, // this API gives the dimension of the screen
+} from 'react-native';
 
 import Card from '../component/Card';
 import Colors from '../constants/Colors';
 import Input from '../component/Input';
 import NumberOntainer from '../component/NumberContainer';
 import DefualtStyle from '../constants/Default-styles';
+import MainButton from '../component/MainButton';
 
 const startGameScreen = (props) => {
 
@@ -44,10 +54,9 @@ const startGameScreen = (props) => {
         <Card style={styles.confirm}>
             <Text>Chosen: </Text>
             <NumberOntainer>{selectedNumber}</NumberOntainer>
-            <Button 
+            <MainButton 
+                style={{marginTop: 30}}
                 title="Start Game!" 
-                style={styles.button} 
-                color="green" 
                 onPress={()=>props.startGameHandler(selectedNumber)}
             />
         </Card>
@@ -101,7 +110,6 @@ const styles = StyleSheet.create({
 
     inputContainer: {
         alignItems: 'center',
-        width: 300,
         maxWidth: '80%',
     },
 
@@ -119,8 +127,7 @@ const styles = StyleSheet.create({
     },
 
     button: {
-        width: 100,
-        height: 100,
+        width: Dimensions.get('window').width/4,
     },
 
     confirm: {

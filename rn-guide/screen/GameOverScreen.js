@@ -1,7 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Image} from 'react-native';
 import DefaultStyle from '../constants/Default-styles';
+import Colors from '../constants/Colors';
 
+/*
+    <Text> component wrapped in a <Text> component will inherit its parent's style
+                     If text goes beyond boundary, it wraps the text in multiple lines
+*/
 const gameOverScreen = (props) => {
 
     return (
@@ -18,8 +23,7 @@ const gameOverScreen = (props) => {
                     // fadeDuration={1000} // change the duration of fade-in effect
                 />
             </View>
-            <Text>Total Rounds: {props.guessRounds}</Text>
-            <Text>Correct Answer: {props.selectedNumber}</Text>
+            <Text style={styles.result}>It takes <Text style={styles.highlight}>{props.guessRounds}</Text> Rounds to guess the correct answer: <Text style={styles.highlight}>{props.selectedNumber}</Text>.</Text>
             <Button title="RESTART" onPress={props.onRestartGame} />
         </View>
     )
@@ -40,11 +44,20 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         overflow: 'hidden'
     },
-
     image: {
         width: '100%',
-        height: '100%',
-        
+        height: '100%',    
+    },
+    highlight: {
+        color: Colors.primary,
+        fontFamily: 'open-sans-bold',
+    },
+    result: {
+        marginBottom: 20,
+        marginHorizontal: 50,
+        textAlign: 'center',
+        fontSize: 20,
+        fontFamily: 'open-sans',
     }
 })
 
